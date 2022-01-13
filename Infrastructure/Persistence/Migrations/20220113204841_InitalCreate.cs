@@ -23,6 +23,16 @@ namespace Infrastructure.Persistence.Migrations
                 {
                     table.PrimaryKey("PK_BlogPosts", x => x.BlogPostId);
                 });
+
+            migrationBuilder.InsertData(
+                table: "BlogPosts",
+                columns: new[] { "BlogPostId", "Body", "DateCreated", "DateModified", "Title" },
+                values: new object[] { new Guid("48ae345f-34b5-4a91-a079-2141959ffeed"), "", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Second sample blog post" });
+
+            migrationBuilder.InsertData(
+                table: "BlogPosts",
+                columns: new[] { "BlogPostId", "Body", "DateCreated", "DateModified", "Title" },
+                values: new object[] { new Guid("dbbbc51f-2d6c-4d15-b5e5-0ed49bad7866"), "# Test heading \n > test quote", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "First sample blog post" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

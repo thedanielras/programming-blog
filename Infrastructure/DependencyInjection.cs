@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Persistence;
+using Infrastructure.Persistence.Repository.BlogPost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,7 @@ namespace Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<PersonalBlogDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("PersonalBlogDB")));
+            services.AddTransient<IBlogPostRepository, BlogPostRepository>();
             return services;
         }
 

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(PersonalBlogDbContext))]
-    [Migration("20220112212505_InitalCreate")]
+    [Migration("20220113204841_InitalCreate")]
     partial class InitalCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,6 +47,24 @@ namespace Infrastructure.Persistence.Migrations
                     b.HasKey("BlogPostId");
 
                     b.ToTable("BlogPosts");
+
+                    b.HasData(
+                        new
+                        {
+                            BlogPostId = new Guid("dbbbc51f-2d6c-4d15-b5e5-0ed49bad7866"),
+                            Body = "# Test heading \n > test quote",
+                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "First sample blog post"
+                        },
+                        new
+                        {
+                            BlogPostId = new Guid("48ae345f-34b5-4a91-a079-2141959ffeed"),
+                            Body = "",
+                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Second sample blog post"
+                        });
                 });
 #pragma warning restore 612, 618
         }

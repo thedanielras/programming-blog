@@ -24,6 +24,8 @@ namespace Infrastructure.Persistence.Seed
             BlogPost samplePost1 = new BlogPost(samplePost1Id, samplePost1Title, samplePost1Description);
             BlogPost samplePost2 = new BlogPost(samplePost2Id, samplePost2Title, samplePost2Description);
 
+            modelBuilder.Entity<BlogPost>().HasData(samplePost1, samplePost2);
+
             return modelBuilder;
         }
     }

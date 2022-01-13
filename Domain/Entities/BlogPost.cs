@@ -15,7 +15,8 @@ namespace Domain.Entities
 
         public BlogPost()
         {
-
+            DateCreated = DateTime.Now;
+            DateModified = DateTime.Now;
         }
 
         public BlogPost(Guid blogPostId, string title, string body)
