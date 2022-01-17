@@ -1,4 +1,5 @@
-﻿using Infrastructure.Persistence.Repository.BlogPost;
+﻿using Application.BlogPost.Queries.GetAll;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace webapi.Controllers
@@ -7,20 +8,19 @@ namespace webapi.Controllers
     [Route("/api/[controller]")]
     public class BlogPostController : ControllerBase
     {
-        private readonly IBlogPostRepository _blogPostRepository;
+        private readonly IMediator _mediator;
 
-        public BlogPostController(IBlogPostRepository blogPostRepository)
+        public BlogPostController(IMediator mediator)
         {
-            _blogPostRepository = blogPostRepository;
+            _mediator = mediator;
         }
-
-
-        // GET all action
-
-
-        public IActionResult GetAll() 
-        { 
-            var blogPosts = _blogPostRepository.GetAll();
+        
+        [HttpGet]
+        [Route("/api/blogposts")]
+        public async Task<IActionResult> GetAll()
+        {
+            var getAllBlogPostsQuery = new GetAllBlogPostsQuery();
+            var blogPosts = await _mediator.Send(getAllBlogPostsQuery);
             return Ok(blogPosts);
         }
 

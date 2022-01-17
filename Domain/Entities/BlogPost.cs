@@ -19,7 +19,7 @@ namespace Domain.Entities
             DateModified = DateTime.Now;
         }
 
-        public BlogPost(Guid blogPostId, string title, string body)
+        public BlogPost(Guid blogPostId, string title, string body) : base()
         {
             BlogPostId = blogPostId;
             Title = title;
